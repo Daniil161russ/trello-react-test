@@ -6,12 +6,9 @@ import './Column.scss';
 
 const Column = (props) => {
 
-    const { column } = props;
+    const { column, onCardDrop } = props;
     const cards = mapOrder(column.cards, column.cardOrder, 'id');
 
-    const onCardDrop = (dropResult) => {
-        console.log('cardDrop',  dropResult);
-    }
     return (
        <>
             <div className='column'>
@@ -20,7 +17,7 @@ const Column = (props) => {
                     <Container
                         {...column.props}
                         groupName="col"
-                        onDrop={onCardDrop}
+                        onDrop={(dropResult) => onCardDrop(dropResult, column.id)}
                         getChildPayload={index => cards[index]}
                         dragClass="card-ghost"
                         dropClass="card-ghost-drop"
@@ -42,7 +39,11 @@ const Column = (props) => {
 
                     </Container>
                 </div>
-                <footer>Add another card</footer>
+                <footer>
+                    <div className='footer__action'>
+                        <i className='fa fa-plus icon'></i> Add another card
+                    </div>
+                </footer>
             </div>
        </> 
     )
