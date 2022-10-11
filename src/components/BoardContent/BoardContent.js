@@ -3,6 +3,7 @@ import { data } from '../../actions/data';
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
 import { mapOrder } from '../../utilities/sorts';
+import { Container, Draggable } from "react-smooth-dnd";
 
 import './BoardContent.scss';
 
@@ -20,6 +21,10 @@ const BoardContent = () => {
         }
     }, []);
 
+    const onColumnDrop = (dropResult) => {
+        console.log('dropResult', dropResult);
+    }
+
     if (_.isEmpty(board)) {
         return (
             <>
@@ -31,12 +36,27 @@ const BoardContent = () => {
     return (
        <>
             <div className='board-columns'>
-                {columns && columns.length && columns.map((column, index) => {
-                    return (
-                        <Column key={column.id} column={column} />
-                    )
-                })}
-                
+                <Container
+                    orientation="horizontal"
+                    onDrop={onColumnDrop}
+                    getChildPayload={index => columns[index]}
+                    dragHandleSelector=".column-drag-handle"
+                    dropPlaceholder={{
+                        animationDuration: 150,
+                        showOnTop: true,
+                        className: 'column-drop-preview'
+                    }}
+                >
+
+                    {columns && columns.length && columns.map((column, index) => {
+                        return (
+                            <Draggable key={column.id}>
+                                <Column column={column} />
+                            </Draggable>
+                        )
+                    })}
+
+                </Container>
             </div>
        </> 
     )
