@@ -4,7 +4,7 @@ import './AppBar.scss';
 const AppBar = () => {
     return (
        <>
-            <nav className='navbar__app'>App nav</nav>
+            <nav className='navbar__app'>Trello Test Task</nav>
        </> 
     )
 }
