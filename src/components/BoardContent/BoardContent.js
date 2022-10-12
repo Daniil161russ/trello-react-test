@@ -87,6 +87,20 @@ const BoardContent = () => {
         inputRef.current.focus();
     }
 
+    const  onUpdateColumn = (newColumn) => {
+        const columnIdUpdate = newColumn.id;
+        let ncols = [...columns];
+        let index = ncols.find((item) => item.id === columnIdUpdate);
+        
+        if (newColumn._destroy) {
+            ncols.splice(index, 1);
+        } else {
+            ncols[index] = newColumn;
+        }
+
+        setColumns(ncols);
+    }
+
     return (
        <>
             <div className='board-columns'>
@@ -105,7 +119,7 @@ const BoardContent = () => {
                     {columns && columns.length && columns.map((column, index) => {
                         return (
                             <Draggable key={column.id}>
-                                <Column column={column} onCardDrop={onCardDrop} />
+                                <Column column={column} onCardDrop={onCardDrop} onUpdateColumn={onUpdateColumn} />
                             </Draggable>
                         )
                     })}

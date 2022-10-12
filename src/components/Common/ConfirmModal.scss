@@ -1,0 +1,42 @@
+.modal {
+    &__header {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    &__content {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    &__footer {
+        .btn {
+            background-color: var(--ds-background-brand-bold,#0079bf);
+            border: none;
+            border-radius: 3px;
+            box-shadow: none;
+            color: var(--ds-text-inverse,#fff);
+            float: left;
+            height: 32px;
+            margin-top: 0;
+            min-height: 32px;
+            padding-bottom: 4px;
+            padding-top: 4px;
+            outline: none;
+            cursor: pointer;
+
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+
+        .btn-close {
+            background-color: red;
+        }
+
+        .btn-confirm {
+            background-color: green;
+        }
+    }
+}

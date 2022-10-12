@@ -19,7 +19,10 @@
         padding: 0 8px;
     }
 
-    header {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding-left: 15px;
         height: $column-header-height;
         line-height: $column-header-height;
@@ -28,6 +31,39 @@
         border-top-left-radius: $column-border-radius;
         border-top-right-radius: $column-border-radius;
         cursor: pointer;
+
+        .icon-delete {
+            color: red;
+            font-size: 20px;
+            &:hover {
+                font-size: 22px;
+            }
+        }
+
+        .form-control {
+            // line-height: 20px;
+            outline: none;
+            padding: 8px 10px;
+            border: none;
+            background-color: transparent;
+            display: block;
+            margin: 0;
+            transition: margin 85ms ease-in, background 85ms ease-in;
+            box-sizing: border-box;
+            width: 100%;
+            height: 25px;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:focus {
+                background-color: var(--ds-background-input,#fff);
+                box-shadow: inset 0 0 0 2px var(--ds-border-focused,#0079bf);
+            }
+        }
+    }
+
+    &__title {
+        width: 90%;
     }
 
     footer {
