@@ -95,6 +95,12 @@ const Column = (props) => {
         setIsShowAddNewCard(false);
     }
 
+    const handleDeleteCard = (oldCard) => {
+        let newColumn = { ...column };
+        newColumn.cards = newColumn.cards.filter((card) => oldCard.id !== card.id);
+        onUpdateColumn(newColumn);
+    }
+
     return (
        <>
             <div className='column'>
@@ -132,7 +138,7 @@ const Column = (props) => {
                         { cards && cards.length > 0 && cards.map((card, index) => {
                             return (
                                 <Draggable key={card.id}>
-                                    <Card card={card}/>
+                                    <Card card={card} handleDeleteCard={handleDeleteCard} />
                                 </Draggable>       
                             )
                         })}
