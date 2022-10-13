@@ -116,13 +116,14 @@ const BoardContent = () => {
                     }}
                 >
 
-                    {columns && columns.length && columns.map((column, index) => {
+                    {columns && columns.length && columns.map((column) => {
                         return (
                             <Draggable key={column.id}>
                                 <Column column={column} onCardDrop={onCardDrop} onUpdateColumn={onUpdateColumn} />
                             </Draggable>
                         )
                     })}
+                    
                 </Container>
                     
 
